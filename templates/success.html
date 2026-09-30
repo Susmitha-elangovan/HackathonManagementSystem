@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+```
+<title>Registration Successful</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+```
+
+</head>
+
+<body>
+
+```
+<div class="navbar">
+
+    <div class="logo">
+        Hackathon Hub
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('events') }}">Home</a>
+        <a href="{{ url_for('events') }}">Hackathons</a>
+        <a href="{{ url_for('add_event') }}">Add Hackathon</a>
+    </div>
+
+</div>
+
+
+<div class="success-container">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h1>Registration Successful!</h1>
+
+    <p>
+        Your team has been registered successfully.
+    </p>
+
+    <h2>{{ event.event_name }}</h2>
+
+    <p>
+        Get ready to build, innovate and hack!
+    </p>
+
+    <br>
+
+    <a href="{{ url_for('events') }}" class="add-btn">
+        View Hackathons
+    </a>
+
+</div>
+```
+
+</body>
+</html>

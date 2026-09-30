@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+```
+<title>Register Team</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+```
+
+</head>
+
+<body>
+
+```
+<div class="navbar">
+
+    <div class="logo">
+        Hackathon Hub
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('events') }}">Home</a>
+        <a href="{{ url_for('events') }}">Hackathons</a>
+        <a href="{{ url_for('add_event') }}">Add Hackathon</a>
+    </div>
+
+</div>
+
+
+<div class="form-container">
+
+    <h1>Register Your Team</h1>
+
+    <p class="form-description">
+        Register your team for the hackathon
+    </p>
+
+
+    <div class="hackathon-info">
+
+        <h2>{{ event.event_name }}</h2>
+
+        <p>
+            <strong>Date:</strong>
+            {{ event.event_date }}
+        </p>
+
+        <p>
+            <strong>Venue:</strong>
+            {{ event.venue }}
+        </p>
+
+    </div>
+
+
+    <form method="POST"
+          action="{{ url_for('register', event_id=event.event_id) }}">
+
+        <label>Student ID</label>
+
+        <input type="number"
+               name="student_id"
+               placeholder="Enter your student ID"
+               required>
+
+
+        <button type="submit">
+            Register Team
+        </button>
+
+    </form>
+
+
+    <br>
+
+    <a href="{{ url_for('events') }}">
+        ← Back to Hackathons
+    </a>
+
+</div>
+```
+
+</body>
+</html>

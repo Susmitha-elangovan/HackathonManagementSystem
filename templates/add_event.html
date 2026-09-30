@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+```
+<title>Add Hackathon</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+```
+
+</head>
+
+<body>
+
+```
+<div class="navbar">
+
+    <div class="logo">
+        Hackathon Hub
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('events') }}">Home</a>
+        <a href="{{ url_for('events') }}">Hackathons</a>
+        <a href="{{ url_for('add_event') }}">Add Hackathon</a>
+    </div>
+
+</div>
+
+
+<div class="form-container">
+
+    <h1>Add New Hackathon</h1>
+
+    <p class="form-description">
+        Create a new college hackathon
+    </p>
+
+
+    <form method="POST"
+          action="{{ url_for('add_event') }}">
+
+        <label>Hackathon Name</label>
+
+        <input type="text"
+               name="event_name"
+               placeholder="Enter hackathon name"
+               required>
+
+
+        <label>Hackathon Date</label>
+
+        <input type="date"
+               name="event_date"
+               required>
+
+
+        <label>Venue</label>
+
+        <input type="text"
+               name="venue"
+               placeholder="Enter venue"
+               required>
+
+
+        <label>Participant Capacity</label>
+
+        <input type="number"
+               name="capacity"
+               min="1"
+               placeholder="Enter maximum participants"
+               required>
+
+
+        <label>Organizer</label>
+
+        <select name="organizer_id" required>
+
+            <option value="">
+                Select Organizer
+            </option>
+
+            {% for organizer in organizers %}
+
+            <option value="{{ organizer.organizer_id }}">
+                {{ organizer.name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <button type="submit">
+            Add Hackathon
+        </button>
+
+    </form>
+
+
+    <br>
+
+    <a href="{{ url_for('events') }}">
+        ← Back to Hackathons
+    </a>
+
+</div>
+```
+
+</body>
+</html>

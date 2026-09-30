@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+```
+<title>Edit Hackathon</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+```
+
+</head>
+
+<body>
+
+```
+<div class="navbar">
+
+    <div class="logo">
+        Hackathon Hub
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('events') }}">Home</a>
+        <a href="{{ url_for('events') }}">Hackathons</a>
+        <a href="{{ url_for('add_event') }}">Add Hackathon</a>
+    </div>
+
+</div>
+
+
+<div class="form-container">
+
+    <h1>Edit Hackathon</h1>
+
+    <p class="form-description">
+        Update hackathon information
+    </p>
+
+
+    <form method="POST"
+          action="{{ url_for('edit_event', event_id=event.event_id) }}">
+
+        <label>Hackathon Name</label>
+
+        <input type="text"
+               name="event_name"
+               value="{{ event.event_name }}"
+               required>
+
+
+        <label>Hackathon Date</label>
+
+        <input type="date"
+               name="event_date"
+               value="{{ event.event_date }}"
+               required>
+
+
+        <label>Venue</label>
+
+        <input type="text"
+               name="venue"
+               value="{{ event.venue }}"
+               required>
+
+
+        <label>Participant Capacity</label>
+
+        <input type="number"
+               name="capacity"
+               value="{{ event.capacity }}"
+               min="1"
+               required>
+
+
+        <label>Organizer</label>
+
+        <select name="organizer_id" required>
+
+            {% for organizer in organizers %}
+
+            <option value="{{ organizer.organizer_id }}"
+                {% if organizer.organizer_id == event.organizer_id %}
+                selected
+                {% endif %}>
+
+                {{ organizer.name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <button type="submit">
+            Update Hackathon
+        </button>
+
+    </form>
+
+
+    <br>
+
+    <a href="{{ url_for('events') }}">
+        ← Back to Hackathons
+    </a>
+
+</div>
+```
+
+</body>
+</html>
